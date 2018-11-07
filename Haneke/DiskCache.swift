@@ -37,6 +37,7 @@ open class DiskCache {
     }()
     
     public init(path: String, capacity: UInt64 = UINT64_MAX) {
+        Log.debug(message: "DiskCache.init path: \(path)")
         self.path = path
         self.capacity = capacity
         self.cacheQueue.async(execute: {
@@ -205,7 +206,8 @@ open class DiskCache {
         do {
             let attributes: [FileAttributeKey: Any] = try fileManager.attributesOfItem(atPath: path)
             do {
-                try fileManager.removeItem(atPath: path)
+                try fileManager.removeItem(at: URL(fileURLWithPath: path))
+                // try fileManager.removeItem(atPath: path)
                 if let fileSize = attributes[FileAttributeKey.size] as? UInt64 {
                     substract(size: fileSize)
                 }
