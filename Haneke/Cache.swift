@@ -123,7 +123,9 @@ open class Cache<T: DataConvertible> where T.Result == T, T : DataRepresentable 
     }
 
     open func remove(key: String, formatName: String = HanekeGlobals.Cache.OriginalFormatName) {
+        Log.debug(message: "Cache{\(self.name)}.remove: \(key) , \(formatName)")
         if let (_, memoryCache, diskCache) = self.formats[formatName] {
+            Log.debug(message: "Cache{\(self.name)}.remove about to delegate to mem and disk")
             memoryCache.removeObject(forKey: key as AnyObject)
             diskCache.removeData(with: key)
         }

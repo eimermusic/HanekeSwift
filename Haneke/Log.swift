@@ -26,9 +26,9 @@ struct Log {
     }
     
     static func debug(message: @autoclosure () -> String, error: Error? = nil) {
-        #if DEBUG
+//        #if DEBUG
             log(.Debug, message, error)
-        #endif
+//        #endif
     }
     
     static func error(message: @autoclosure () -> String, error: Error? = nil) {

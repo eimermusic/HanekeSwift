@@ -199,6 +199,8 @@ open class DiskCache {
     }
     
     fileprivate func removeFile(atPath path: String) {
+        Log.debug(message: "DiskCache.removeFile atPath \(path)")
+
         let fileManager = FileManager.default
         do {
             let attributes: [FileAttributeKey: Any] = try fileManager.attributesOfItem(atPath: path)
