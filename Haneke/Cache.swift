@@ -169,7 +169,7 @@ open class Cache<T: DataConvertible> where T.Result == T, T : DataRepresentable 
 
     // MARK: Notifications
     
-    func onMemoryWarning() {
+    public func onMemoryWarning() {
         for (_, (_, memoryCache, _)) in self.formats {
             memoryCache.removeAllObjects()
         }
